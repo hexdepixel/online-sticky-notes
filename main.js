@@ -5,7 +5,7 @@ var max_stickies = 1000;
 
 // basic sticky note object with coords & colour
 class Sticky {
-	constructor(id, x, y, colour) {
+	constructor(id, x, y, colour, text) {
 		// basic attributes
 		this.id = id;
 		this.x = x;
@@ -13,7 +13,7 @@ class Sticky {
 		this.colour = colour;
 		// creates elements
 		this.container = Sticky.Container(x, y, colour);
-		this.text = Sticky.Text("Write stuff here...");
+		this.text = Sticky.Text(text);
 		this.deleter = Sticky.Icon("deleter", "Delete sticky");
 		this.palette = Sticky.Icon("palette", "Recolour sticky");
 		this.dragger = Sticky.Icon("dragger", "Move sticky");
@@ -33,7 +33,7 @@ class Sticky {
 		};
 		// palette code
 		this.palette.onclick = () => {
-			this.colour = prompt(`What colour will the sticky be? (Current: ${colour})`);
+			this.colour = prompt(`What colour will the sticky be? (Current: ${this.colour})`);
 			this.container.style.borderColor = this.colour;
 		}
 		// dragger code
@@ -86,7 +86,7 @@ class Sticky {
 }
 
 // adds a sticky to the sticky dictionary
-function add_sticky(x, y, colour) {
+function add_sticky(x, y, colour, text) {
 	// checks if max stickies has been reached
 	if (Object.keys(sticky_dict).length >= max_stickies) {
 		alert(`Too many stickies (${Object.keys(sticky_dict).length}/${max_stickies})!`);
@@ -101,9 +101,41 @@ function add_sticky(x, y, colour) {
 	);
 
 	// creates the sticky
-	sticky_dict[id] = new Sticky(id, x, y, colour);
+	sticky_dict[id] = new Sticky(id, x, y, colour, text);
 }
 
 document.getElementById("new_sticky").onclick = () => {
-	add_sticky(50, 50, "black");
+	add_sticky(50, 50, "black", "Write stuff here...");
 }
+
+// saves stickies
+window.onbeforeunload = () => {
+	var attrs = [];
+
+	for (var id in sticky_dict) {
+		attrs.push({
+			"id": id,
+			"x": sticky_dict[id].x,
+			"y": sticky_dict[id].y,
+			"colour": sticky_dict[id].colour,
+			"text": sticky_dict[id].text.innerHTML
+		});
+	}
+
+	localStorage.setItem("attrs", JSON.stringify(attrs));
+};
+
+// loads stickies
+window.onload = () => {
+	var attrs = JSON.parse(localStorage.getItem("attrs"));
+
+	for (var i in attrs) {
+		sticky_dict[attrs[i].id] = new Sticky(
+			attrs[i].id,
+			parseInt(attrs[i].x),
+			parseInt(attrs[i].y),
+			attrs[i].colour,
+			attrs[i].text
+		);
+	}
+};
