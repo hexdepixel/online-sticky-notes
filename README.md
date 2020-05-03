@@ -7,6 +7,7 @@ It's very simple - create sticky notes, drag them around, and write in them. You
 
 Admittedly, the UI is awful, the name is a bit _too_ descriptive, and there are some missing features (e.g. collaboration). In the end, It's just a little tool I made for myself.
 
+---
 ### Changelog
 ##### 2020/05/03 - v1.1
 - README is actually "good" now
