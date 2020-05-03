@@ -2,7 +2,9 @@
 _Sticky notes, but online._
 
 There are many uses for sticky notes. However, their attachment to the physical realm is a bit of a drawback, and the one online implementation I used constantly had "expired sessions" which meant I had to revert to previous saves. So I made this.
+
 It's very simple - create sticky notes, drag them around, and write in them. You can change their colours too. Create whatever wacky workspace you wish.
+
 Admittedly, the UI is awful, the name is a bit _too_ descriptive, and there are some missing features (e.g. collaboration). In the end, It's just a little tool I made for myself.
 
 ### Changelog
