@@ -1,0 +1,36 @@
+/* elements that float on top of everything */
+.floating {
+	position: fixed;
+	overflow: hidden;
+}
+/* element which makes background dim and non-interactive */
+#popup_background {
+	/* fills and covers whole screen */
+	left	: 0;
+	top		: 0;
+	width	: 100%;
+	height	: 100%;
+	z-index	: 1;
+	/* applies semi-transparent background, defaults to opaque if transparency not available */
+	background: rgba(0, 0, 0);
+	background: rgba(0, 0, 0, 0.25);
+}
+/* container for popup */
+#popup_container {
+	/* goes on top of popup background, in middle of screen with set dimensions */
+	z-index	: 2;
+	left	: calc(50vw - 150px);
+	top		: calc(50vh - 75px);
+	width	: 300px;
+	height	: 150px;
+
+	background	: white;
+	padding		: 2px;
+	border		: 4px ridge white;
+	font-family	: monospace;
+}
+/* container for popup buttons */
+#popup_input {
+	position: absolute;
+	bottom	: 0;
+}

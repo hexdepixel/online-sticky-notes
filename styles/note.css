@@ -1,0 +1,59 @@
+/* contains everything in the note */
+.container {
+	border	: 4px ridge;
+	display	: inline-block;
+	position: fixed;
+}
+/* draggable and contains buttons for closing/minimising/etc */
+.top_bar {
+	/* sets cursor to grab, defaults to move if grab is not available */
+	cursor: move;
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+
+	height	: 16px;
+	padding	: 4px;
+}
+/* when note is being dragged */
+.top_bar:active {
+	/* sets cursor to grabbing, defaults to move if grab is not available */
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+}
+/* buttons in the top bar for closing/minimising/etc, contain icons */
+.icon_but {
+	background	: none;
+	padding		: 0;
+	border		: none;
+	cursor		: pointer;
+}
+.icon_but:active {
+	/* overrides button:active */
+	border: none;
+}
+/* image that goes inside icon buttons */
+.icon_img {
+	/* creates drop shadow that conforms to shape of image instead of being square */
+	filter			: drop-shadow(-2px 2px 0 #00000040);
+	-webkit-filter	: drop-shadow(-2px 2px 0 #00000040);
+
+	image-rendering	: pixelated;
+	width			: 16px;
+}
+/* where the note's text goes */
+.content {
+	background	: white; /* makes background opaque */
+	border		: 2px solid white;
+	margin		: 0;
+}
+/* manually set button colours, will probably fix these later */
+#red_icon		{ background: #ff8080; border-color: #ff8080; }
+#orange_icon	{ background: #ffc080; border-color: #ffc080; }
+#yellow_icon	{ background: #ffff80; border-color: #ffff80; }
+#green_icon		{ background: #80ff80; border-color: #80ff80; }
+#cyan_icon		{ background: #80ffff; border-color: #80ffff; }
+#blue_icon		{ background: #8080ff; border-color: #8080ff; }
+#purple_icon	{ background: #c080ff; border-color: #c080ff; }
+#pink_icon		{ background: #ff80ff;	border-color: #ff80ff; }

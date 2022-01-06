@@ -7,19 +7,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 		<title>Online Sticky Notes</title>
-		<link rel="stylesheet" type="text/css" href="style.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/main.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/note.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/popup.css"/>
 		<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 	</head>
 	<body>
-		<button id="new_note">New note</button>
-		<button id="save">Save</button>
-		<button id="load">Load</button><br/>
-		<button id="copy_save">Export</button>
-		<button id="copy_load">Import</button><br/>
-		Online Sticky Notes v1.1 - HexdePixel
+		<!-- note: move the default parameters to main.js -->
+		<button onclick="new_note(0, 100, 'red', 'Write stuff here...')">New note</button><!--
+		--><button onclick="save('attrs')">Save</button><!--
+		--><button onclick="load('attrs')">Load</button>
+		<br/>
+		<button onclick="copy_save()">Export</button><!--
+		--><button onclick="copy_load()">Import</button>
+		<br/>
+		Online Sticky Notes v2.0 - HexdePixel
+		<hr/>
 
-		<script src="classes.js"></script>
-		<script src="save.js"></script>
-		<script src="main.js"></script>
+		<script src="scripts/popup.js"></script>
+		<script src="scripts/note.js"></script>
+		<script src="scripts/save.js"></script>
+		<script src="scripts/main.js"></script>
 	</body>
 </html>
