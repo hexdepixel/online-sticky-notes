@@ -6,6 +6,10 @@ It's very simple - create sticky notes, drag them around, and write in them. You
 Admittedly, the name is a bit _too_ descriptive, and there are some missing features (e.g. collaboration). In the end, It's just a little tool I made for myself.
 
 ### Changelog
+##### 2022/03/31 - v2.1
+- Minimisation is now recorded in the save
+- Changed text for note deletion confirmation screen - "close" becomes "delete"
+
 ##### 2022/01/06 - v2.0
 - Completely rewritten code (i.e. I actually forgot what I changed)
 - Better looking UI
