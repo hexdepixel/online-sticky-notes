@@ -4,12 +4,13 @@ class Note {
 	// y		: distance in pixels from top edge of window
 	// colour	: css colour
 	// text		: text inside note
-	constructor(id, x, y, colour, text) {
+	constructor(id, x, y, colour, text, min) {
 		// basic attributes
 		this.id		= id;
 		this.x		= x;
 		this.y		= y;
 		this.colour	= colour;
+		this.min	= min;
 		// elements
 		this.container		= Note.Container(x, y, this.colour);
 		this.top_bar		= Note.Top_bar(this.colour);
@@ -41,7 +42,7 @@ class Note {
 		// opens close popup
 		this.close_but.onclick = () => {
 			popup(
-				"Are you sure you want to close this note forever?",
+				"Are you sure you want to delete this note forever?",
 				// deletes elements and note object
 				Popup_Button("Confirm", () => {
 					document.body.removeChild(this.container);
@@ -53,13 +54,15 @@ class Note {
 		};
 		// toggles note content
 		this.min_but.onclick = () => {
-			// if content is invisible
+			// if content is visible
 			if (this.content.offsetWidth > 0 && this.content.offsetHeight > 0) {
-				// make it visible
+				// make it invisible
 				this.content.style.display = "none";
+				this.min = true;
 			} else {
-				// otherwise make it invisible
+				// otherwise make it visible
 				this.content.style.display = "block";
+				this.min = false;
 			}
 		}
 		// opens palette popup
@@ -83,6 +86,9 @@ class Note {
 				this.top_bar.appendChild(this.min_but);
 				this.top_bar.appendChild(this.palette_but);
 			this.container.appendChild(this.content);
+
+		// minimises note content on load if specified
+		if (min) this.min_but.onclick();
 	}
 	// called when a colour selector button is pressed
 	// colour: css colour to make the note into

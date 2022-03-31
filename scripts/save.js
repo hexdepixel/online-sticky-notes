@@ -5,10 +5,11 @@ function notes_to_array(notes) {
 	for (var id in notes) {
 		attr_arrays.push({
 			"id": id,
-			"x": note_dict[id].x,
-			"y": note_dict[id].y,
+			"x": notes[id].x,
+			"y": notes[id].y,
 			"colour": notes[id].colour,
-			"text": notes[id].content.innerHTML
+			"text": notes[id].content.innerHTML,
+			"min": notes[id].hasOwnProperty("min") ? notes[id].min : false
 		});
 	}
 
@@ -25,7 +26,8 @@ function array_to_notes(arrays) {
 			parseInt(arrays[array].x),
 			parseInt(arrays[array].y),
 			arrays[array].colour,
-			arrays[array].text
+			arrays[array].text,
+			arrays[array].hasOwnProperty("min") ? arrays[array].min : false
 		);
 	}
 
